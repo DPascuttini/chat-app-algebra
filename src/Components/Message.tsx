@@ -7,7 +7,7 @@ export const Message = (props: Props) => {
   const { message } = props;
   const { member, text } = message;
   const currentMember = useCustomMember();
-  const messageFromMe = member.id === currentMember.id;
+  const messageFromMe = currentMember && member.id === currentMember.id;
   const className = messageFromMe
     ? 'Messages-message currentMember'
     : 'Messages-message';
