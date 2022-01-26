@@ -1,4 +1,4 @@
-import { useCustomMember } from '../Hooks/CurrentMemberContext';
+import { useCurrentMemberContext } from '../Hooks/CurrentMemberContext';
 import { MessageType } from '../Types/Message';
 
 type Props = { message: MessageType };
@@ -6,7 +6,7 @@ type Props = { message: MessageType };
 export const Message = (props: Props) => {
   const { message } = props;
   const { member, text } = message;
-  const currentMember = useCustomMember();
+  const [currentMember] = useCurrentMemberContext();
   const messageFromMe = currentMember && member.id === currentMember.id;
   const className = messageFromMe
     ? 'Messages-message currentMember'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useCustomMember } from '../Hooks/CurrentMemberContext';
+import { useCurrentMemberContext } from '../Hooks/CurrentMemberContext';
 import { MessageType } from '../Types/Message';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export const Input = (props: Props) => {
   const { onSubmit } = props;
-  const member = useCustomMember();
+  const [member] = useCurrentMemberContext();
   const [message, setMessage] = useState('');
   return (
     <div className="Input">

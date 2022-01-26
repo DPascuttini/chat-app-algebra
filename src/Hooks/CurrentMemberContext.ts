@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import { createStateContext } from 'react-use';
 
 export type memberType = {
   id: string;
   clientData: { color: string; username: string };
 };
-export const currentMemberContext = React.createContext<memberType | null>({
-  clientData: { color: 'red', username: 'pero' },
-  id: '1',
-});
-
-export const useCustomMember = () => useContext(currentMemberContext);
+const [useCurrentMemberContext, CurrentMemberProvider] =
+  createStateContext<memberType | null>(null);
+export { useCurrentMemberContext, CurrentMemberProvider };
