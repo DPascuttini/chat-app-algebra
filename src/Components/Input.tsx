@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { useCurrentMemberContext } from '../Hooks/CurrentMemberContext';
 import { MessageType } from '../Types/Message';

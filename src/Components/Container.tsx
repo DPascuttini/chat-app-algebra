@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { useCurrentMemberContext } from '../Hooks/CurrentMemberContext';
 import { useDroneContext } from '../Hooks/droneContext';
 import { useMessagesContext } from '../Hooks/messagesContext';
@@ -11,19 +9,27 @@ import { Messages } from './Messages';
 type Props = {};
 const myRoom = 'PaskisRoom';
 export const Container = (props: Props) => {
-  const [drone, setDrone] = useDroneContext();
-  const [member] = useCurrentMemberContext();
+  const [drone] = useDroneContext();
+  const [member, setMember] = useCurrentMemberContext();
   const [messages, setMessages] = useMessagesContext();
 
-  useEffect(() => {
-    if (drone) {
-      const room = drone.subscribe(myRoom);
-      //@ts-ignore
-      room.on('data', (data, member) => {
-        setMessages([...messages, { member, text: data }]);
+  if (drone) {
+    if (!member?.id) {
+      drone.on('open', (error: any) => {
+        if (error) {
+          return console.error(error);
+        }
+        //@ts-ignore
+        setMember({ ...member, id: drone.clientId });
       });
     }
-  }, [drone]);
+
+    const room = drone.subscribe(myRoom);
+    //@ts-ignore
+    room.on('data', (data) => {
+      setMessages([...messages, { ...data }]);
+    });
+  }
 
   return member?.id ? (
     <>

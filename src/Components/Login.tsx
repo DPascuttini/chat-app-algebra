@@ -42,23 +42,13 @@ export const Login = (props: Props) => {
       </div>
       <button
         className="submit"
-        onClick={async (e) => {
+        onClick={() => {
           if (member?.clientData.username && member.clientData.color) {
-            setDrone(
-              //@ts-ignore
-              await new Scaledrone(a, {
-                data: member.clientData,
-              })
-            );
-            //@ts-ignore
-            drone.on('open', (error) => {
-              if (error) {
-                return console.error(error);
-              }
-
-              setMember({ ...member, id: drone.clientId });
-              console.log(member);
+            // @ts-ignore
+            const drone = new window.Scaledrone(a, {
+              data: member.clientData,
             });
+            if (drone) setDrone(drone);
           }
         }}
       >
