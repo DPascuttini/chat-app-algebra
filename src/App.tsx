@@ -9,8 +9,8 @@ function App() {
     <DroneProvider>
       <CurrentMemberProvider>
         <MessagesContextProvider>
+          <header className="App-header">Algebra Chat App</header>
           <div className="container">
-            <div className="App-header">Algebra Chat App</div>
             <Container />
           </div>
         </MessagesContextProvider>

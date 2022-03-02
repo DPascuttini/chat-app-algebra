@@ -83,6 +83,7 @@ input {
   border-radius: 8px;
   border: 1px solid orangered;
   flex-grow: 1;
+  width: 90vh;
 }
 
 button {
@@ -91,8 +92,13 @@ button {
   background-color: orange;
   color: black;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   margin-left: 10px;
+}
+button:hover {
+  background: orangered;
+  color: black;
+  border-radius: 5px;
 }
 
 .login-box {
@@ -138,7 +144,7 @@ button {
   pointer-events: none;
   transition: 0.5s;
 }
-.login-box .user-box input:focus ~ label {
+.login-box .user-box input ~ label {
   top: -20px;
   left: 0;
   color: white;
@@ -168,7 +174,7 @@ button {
 }
 
 .container {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
