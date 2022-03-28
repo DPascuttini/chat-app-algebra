@@ -1,5 +1,3 @@
 # chat-app-algebra
-Building a chat app using react, typescript and scaledrone
+Chat app built using react, typescript and scaledrone as a final project for Algebra University College.
 
-
-In development
